@@ -1,4 +1,6 @@
 from fastapi import FastAPI, status
+from routes.healthy_check import router as health_checker
+
 
 
 app = FastAPI(title="RxManager API")
@@ -8,6 +10,4 @@ async def root() -> str:
     return "API is running"
 
 
-@app.get("/check", status_code=status.HTTP_200_OK)
-async def healthy_check():
-    return {"STATUS": "healthy"}
+app.include_router(health_checker)
