@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, Float, Boolean, String, DateTime, ForeignKey, Column, Enum
+from sqlalchemy import Integer, Boolean, DateTime, Column, Enum
 from sqlalchemy.sql import func
 from sqlalchemy.orm import declarative_base, relationship
 import enum
@@ -23,4 +23,4 @@ class Fields(Base):
     timeframe = Column(Integer, nullable=False)
     is_active = Column(Boolean, default=True)
 
-    doc_relation = relationship("Doctors", back_populates="field_relation")
+    doctors = relationship("Doctors", back_populates="field_relation")
