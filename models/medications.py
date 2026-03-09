@@ -3,7 +3,8 @@ from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy.sql import func
 
 
-Base = declarative_base()
+from users import Base
+
 
 class Medications(Base):
     __tablename__ = "medications"

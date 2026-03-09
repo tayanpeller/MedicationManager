@@ -1,9 +1,9 @@
 from sqlalchemy import Integer, Boolean, DateTime, Column, Enum
 from sqlalchemy.sql import func
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import relationship
 import enum
 
-Base = declarative_base()
+from users import Base
 
 
 class EnumFields(str, enum.Enum):

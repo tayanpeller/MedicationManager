@@ -1,10 +1,8 @@
 from sqlalchemy import Integer, String, Boolean, DateTime, Column, ForeignKey
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
-
-
-Base = declarative_base()
+from users import Base
 
 class Batches(Base):
     __tablename__ = "batches"

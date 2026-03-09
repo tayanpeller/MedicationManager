@@ -3,7 +3,8 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import declarative_base, relationship
 import enum
 
-Base = declarative_base()
+from users import Base
+
 
 class Hospitals(Base):
     __tablename__ = "hospitals"
