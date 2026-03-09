@@ -12,6 +12,8 @@ class Users(Base):
     lastname = Column(String, nullable=False)
     email = Column(String, nullable=False, unique=True)
     hash_pwd = Column(String, nullable=False)
+    
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    
     is_active = Column(Boolean, nullable=False, default=True)
