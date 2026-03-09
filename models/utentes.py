@@ -1,10 +1,10 @@
 from sqlalchemy import Integer, Column, ForeignKey
 from sqlalchemy.orm import relationship
-from users import Users
+from models.users import Users
 
 
 class Utentes(Users):
-    __talbename__ = "users"
+    __tablename__ = "utentes"
 
     doctor_id = Column(Integer, ForeignKey("doctors.id"), nullable=False)
 

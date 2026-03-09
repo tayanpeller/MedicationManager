@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Boolean
-from users import Users
+from models.users import Users
 
 class Admins(Users):
     __tablename__ = "admins"

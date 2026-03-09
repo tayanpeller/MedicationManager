@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.orm import relationship
-from users import Users
+from models.users import Users
 
 
 class Clinicians(Users):

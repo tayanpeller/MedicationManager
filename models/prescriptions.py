@@ -2,7 +2,7 @@ from sqlalchemy import Integer, Boolean, DateTime, Float, Column, ForeignKey
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy.sql import func
 
-from users import Base
+from models.users import Base
 
 
 

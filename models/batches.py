@@ -2,7 +2,7 @@ from sqlalchemy import Integer, String, Boolean, DateTime, Column, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
-from users import Base
+from models.users import Base
 
 class Batches(Base):
     __tablename__ = "batches"
