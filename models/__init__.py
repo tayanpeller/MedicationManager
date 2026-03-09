@@ -6,3 +6,4 @@ from .fields import Fields
 from .medications import Medications
 from .batches import Batches
 from .prescriptions import Prescriptions
+from .users import Base
