@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 import enum
 
-from models.users import Base
+from db.config import Base
 
 
 class EnumFields(str, enum.Enum):

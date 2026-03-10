@@ -3,7 +3,7 @@ from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy.sql import func
 
 
-from models.users import Base
+from db.config import Base
 
 
 class Medications(Base):
