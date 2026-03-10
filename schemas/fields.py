@@ -5,12 +5,3 @@ from typing import Optional
 
 class FieldsResponse(BaseModel):
     description: EnumFields
-
-class FieldsPrivate(FieldsResponse):
-    timeframe: int
-    is_active: bool
-    created_at: Optional[datetime]
-    updated_at: Optional[datetime]
-
-    class Config:
-        orm_mode = True
