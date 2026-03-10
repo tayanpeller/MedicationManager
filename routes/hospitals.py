@@ -19,7 +19,7 @@ def hospital_create(hospital: HospitalCreate, db: Session = Depends(get_db)):
 
 @router.get("", response_model=List[HospitalRead])
 def hospital_get(db: Session = Depends(get_db)):
-    hospitals = db.query(Hospitals).all()
+    hospitals = db.query(Hospitals).filter(Hospitals.is_active == True).all()
 
     if not hospitals:
         raise HTTPException(
@@ -31,7 +31,7 @@ def hospital_get(db: Session = Depends(get_db)):
  
 @router.get("/{hospital_id}", response_model=HospitalRead)
 def hospital_get_by_id(hospital_id: int, db: Session = Depends(get_db)):
-    hospital = db.query(Hospitals).filter(Hospitals.id == hospital_id).first()
+    hospital = db.query(Hospitals).filter(Hospitals.id == hospital_id, Hospitals.is_active == True).first()
 
     if not hospital:
         raise HTTPException(
@@ -56,4 +56,22 @@ def hospital_update_by_id(hospital_id: int, updateHospital: HospitalUpdate, db: 
     db.commit()
     db.refresh(hospital)
 
+    return hospital
+
+
+@router.delete("/{hospital_id}", response_model=HospitalRead)
+def hospitals_delete_by_id(hospital_id:int, db: Session = Depends(get_db)):
+    hospital = db.query(Hospitals).filter(Hospitals.id == hospital_id).first()
+
+    if not hospital:
+        raise HTTPException(
+            status_code=404,
+            detail="Hospital not found in DataBase!"
+        )
+    
+    hospital.is_active = False #type: ignore
+
+    db.commit()
+    db.refresh(hospital)
+    
     return hospital
