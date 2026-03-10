@@ -21,6 +21,12 @@ def hospital_create(hospital: HospitalCreate, db: Session = Depends(get_db)):
 def hospital_get(db: Session = Depends(get_db)):
     hospitals = db.query(Hospitals).all()
 
+    if not hospitals:
+        raise HTTPException(
+            status_code=404,
+            detail="No Hospitals Available"
+        )
+
     return hospitals
  
 @router.get("/{hospital_id}", response_model=HospitalRead)
@@ -33,4 +39,21 @@ def hospital_get_by_id(hospital_id: int, db: Session = Depends(get_db)):
             detail="Hospital Not Found"
         )
     
+    return hospital
+
+@router.put("/{hospital_id}", response_model=HospitalRead)
+def hospital_update_by_id(hospital_id: int, updateHospital: HospitalUpdate, db:  Session = Depends(get_db)):
+    hospital = db.query(Hospitals).filter(Hospitals.id == hospital_id).first()
+
+    if not hospital:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Hospital with ID: {hospital_id} Not Found!"
+        )
+    
+    hospital.name = updateHospital.name #type: ignore
+    
+    db.commit()
+    db.refresh(hospital)
+
     return hospital
