@@ -6,7 +6,7 @@ from typing import Optional
 class FieldsResponse(BaseModel):
     description: EnumFields
 
-class Fields(FieldsResponse):
+class FieldsPrivate(FieldsResponse):
     timeframe: int
     is_active: bool
     created_at: Optional[datetime]
