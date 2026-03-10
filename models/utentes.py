@@ -9,4 +9,4 @@ class Utentes(Users):
     doctor_id = Column(Integer, ForeignKey("doctors.id"), nullable=False)
 
     doctor = relationship("Doctors", back_populates="utentes")
-    prescription = relationship("Prescriptions", back_populates="utente")
+    prescriptions = relationship("Prescriptions", back_populates="utente")

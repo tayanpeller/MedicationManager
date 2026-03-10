@@ -18,4 +18,4 @@ class Medications(Base):
     is_active = Column(Boolean, default=True)
 
     batches = relationship("Batches", back_populates="medication")
-    prescription = relationship("Prescriptions", back_populates="medication")
+    prescriptions = relationship("Prescriptions", back_populates="medication")
