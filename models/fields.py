@@ -25,4 +25,4 @@ class Fields(Base):
     
     is_active = Column(Boolean, default=True)
 
-    doctors = relationship("Doctors", back_populates="field")
+    doctor = relationship("Doctors", back_populates="field")

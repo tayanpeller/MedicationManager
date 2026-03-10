@@ -12,4 +12,4 @@ class Clinicians(Users):
     hospital_id = Column(Integer, ForeignKey("hospitals.id"), nullable=False)
     hospital = relationship("Hospitals", back_populates="clinicians")
 
-    prescription = relationship("Prescriptions", back_populates="clinician")
+    prescriptions = relationship("Prescriptions", back_populates="clinician")
