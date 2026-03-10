@@ -47,3 +47,20 @@ def get_field_by_id(field_id: int, db: Session = Depends(get_db)):
         )
     
     return field
+
+@router.delete("/{field_id}", response_model=FieldsResponse)
+def delete_field_by_id(field_id: int, db: Session = Depends(get_db)):
+    field = db.query(Fields).filter(Fields.id == field_id, Fields.is_active == True).first()
+
+    if not field:
+        raise HTTPException(
+            status_code=404,
+            detail="Field Not In DataBase"
+        )
+    
+    field.is_active = False #type: ignore
+
+    db.commit()
+    db.refresh(field)
+
+    return field
