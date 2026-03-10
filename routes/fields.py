@@ -35,3 +35,15 @@ def create_field(field: FieldsResponse, db: Session = Depends(get_db)):
     db.refresh(new_field)
 
     return new_field
+
+@router.get("/{field_id}", response_model=FieldsResponse)
+def get_field_by_id(field_id: int, db: Session = Depends(get_db)):
+    field = db.query(Fields).filter(Fields.id == field_id, Fields.is_active == True).first()
+
+    if not field:
+        raise HTTPException(
+            status_code=404,
+            detail="Field Not in DataBase!"
+        )
+    
+    return field
