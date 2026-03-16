@@ -1,7 +1,7 @@
 from sqlalchemy import Integer, Float, String, Boolean, DateTime, Column, ForeignKey
 from sqlalchemy.sql import func
 
-from db.config import Base
+from db.base import Base
 
 class Users(Base):
     __abstract__ = True

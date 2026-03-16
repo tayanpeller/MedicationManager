@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import declarative_base, relationship
 import enum
 
-from db.config import Base
+from db.base import Base
 
 
 class Hospitals(Base):
