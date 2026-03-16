@@ -21,7 +21,6 @@ class Fields(Base):
     
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
-    timeframe = Column(Integer, nullable=False)
     
     is_active = Column(Boolean, default=True)
 
